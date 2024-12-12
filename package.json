@@ -5,8 +5,9 @@
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "scripts": {
-    "build": "nest build",
-    "vercel-build": "npx prisma migrate deploy",
+    "build": "npm run prisma:generate && nest build",
+    "vercel-prebuild": "npm run prisma:generate && npm run vercel-build",
+    "vercel-build": "npm run vercel-prebuild",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "npx nest start --watch",
